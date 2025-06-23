@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Username:</label><br>
+        <input type="text" name="username" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <label>Select Role (optional):</label><br>
+        <select name="role">
+            <option value="">User (Default)</option>
+            <option value="Admin">Admin</option>
+            <option value="SuperAdmin">SuperAdmin</option>
+        </select><br><br>
+
+        <label>Secret Key (if Admin/SuperAdmin):</label><br>
+        <input type="text" name="secret_key" placeholder="Secret Key"><br><br>
+
+        <button type="submit">Login</button>
+
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>
